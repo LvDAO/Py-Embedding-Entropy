@@ -168,8 +168,8 @@ def cEE(x: torch.Tensor, y: torch.Tensor, z: torch.Tensor, p: int, k: int, Thei)
     nXZ = torch.sum(temp_dist < half_epsilon, dim=1)
 
     temp_dist = torch.cdist(
-        torch.cat((YpNN, ZpNN).unsqueeze(0), dim=1),
-        torch.cat((YpNN, ZpNN).unsqueeze(0), dim=1),
+        torch.cat((YpNN, ZpNN), dim=1).unsqueeze(0),
+        torch.cat((YpNN, ZpNN), dim=1).unsqueeze(0),
         p=float("inf"),
     ).squeeze(0)
     temp_dist[~mask] = torch.inf
